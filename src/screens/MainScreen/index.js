@@ -7,8 +7,9 @@ import MenuButton from "../../components/MenuButton"
 export default class App extends Component {
   static navigationOptions = {
     title: 'Hips And Knees',
+    
   };
-
+//headerLeft: null
   render() {
     return (
       <ScrollView>

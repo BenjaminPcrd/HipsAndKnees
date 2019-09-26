@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 
-import { createAppContainer } from "react-navigation";
+import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import { createStackNavigator } from 'react-navigation-stack';
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 
+import Authentication from './screens/Authentication';
 import MainScreen from "./screens/MainScreen";
 import ExerciseVideos from "./screens/ExerciseVideos";
 import ExerciseTracking from "./screens/ExerciseTracking";
@@ -38,7 +39,7 @@ const TraxivityTabNavigator = createMaterialTopTabNavigator(
   }
 );
 
-const AppNavigator = createStackNavigator(
+const AppStack = createStackNavigator(
   {
     MainScreen: { screen: MainScreen },
     ExerciseVideos: { screen: ExerciseVideos },
@@ -52,9 +53,42 @@ const AppNavigator = createStackNavigator(
   }
 );
 
-const AppContainer = createAppContainer(AppNavigator);
+const AuthStack = createStackNavigator(
+  {
+    Authentication: { screen: Authentication }
+  }
+);
 
-export default class App extends Component {
+/*const prevGetStateForAction = AppNavigator.router.getStateForAction;
+
+AppNavigator.router.getStateForAction = (action, state) => {
+  // Do not allow to go back from Home
+  if (action.type === 'Navigation/BACK' && state && state.routes[state.index].routeName === 'MainScreen') {
+    return null;
+  }
+
+  // Do not allow to go back to Login
+  if (action.type === 'Navigation/BACK' && state) {
+    const newRoutes = state.routes.filter(r => r.routeName !== 'Authentication');
+    const newIndex = newRoutes.length - 1;
+    return prevGetStateForAction(action, { index: newIndex, routes: newRoutes });
+  }
+  return prevGetStateForAction(action, state);
+};*/
+
+const AppContainer = createAppContainer(
+  createSwitchNavigator(
+    {
+      AppStack: AppStack,
+      AuthStack: AuthStack,
+    },
+    {
+      initialRouteName: 'AuthStack',
+    }
+  )
+);
+
+export default class Default extends Component {
   render() {
     return <AppContainer />;
   }
