@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import {
   View,
-  Text,
-  Button
+  StyleSheet
 } from 'react-native';
 
 import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
@@ -27,20 +26,24 @@ export default class Authentication extends Component {
     const data = await GoogleSignin.signIn();
     const credential = firebase.auth.GoogleAuthProvider.credential(data.idToken, 'zRioRfW4SqMzmUJ_EKY1pzzo')
     const firebaseUserCredential = await firebase.auth().signInWithCredential(credential);
-    console.log(firebaseUserCredential.user._auth._authResult)
+    
     if(firebaseUserCredential.user._auth._authResult) {
+      this.props.navigation.navigate('MainScreen')
+    }
+  }
+
+  async componentDidMount() {
+    const isSignedIn = await GoogleSignin.isSignedIn();
+    if(isSignedIn) {
       this.props.navigation.navigate('MainScreen')
     }
   }
 
   render() {
     return (
-      <View>
-          <Text>
-          Authentication
-          </Text>
+      <View style={styles.container}>
           <GoogleSigninButton
-            style={{ width: 200, height: 75 }}
+            style={{ width: 300, height: 100 }}
             size={GoogleSigninButton.Size.Wide}
             color={GoogleSigninButton.Color.Dark}
             onPress={() => this._signIn()}/>
@@ -48,3 +51,11 @@ export default class Authentication extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+})

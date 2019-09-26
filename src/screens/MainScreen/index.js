@@ -9,7 +9,7 @@ export default class App extends Component {
     title: 'Hips And Knees',
     
   };
-//headerLeft: null
+  
   render() {
     return (
       <ScrollView>
