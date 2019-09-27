@@ -17,7 +17,7 @@ export default class ExerciseVideos extends Component {
     return (
       <FlatList
         data={videoData}
-        renderItem={({ item }) => <VideoCard title={item.title} subtitle={item.subtitle} description={item.description} image={item.image} url={item.url} onPress={() => console.log('gfdgfd')}/>}
+        renderItem={({ item }) => <VideoCard title={item.title} subtitle={item.subtitle} description={item.description} image={item.image} url={item.url} onPress={() => this.props.navigation.navigate('Video', { item: item })}/>}
         keyExtractor={item => item.id}
       />
     );
