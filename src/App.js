@@ -10,6 +10,7 @@ import ExerciseVideos from "./screens/ExerciseVideos";
 import ExerciseTracking from "./screens/ExerciseTracking";
 import UsefulContacts from "./screens/UsefulContacts";
 import Questionnaire from "./screens/Questionnaire";
+import Video from "./screens/Video"
 
 import Today from "./screens/Traxivity/Today";
 import Weekly from "./screens/Traxivity/Weekly";
@@ -46,7 +47,8 @@ const AppStack = createStackNavigator(
     ExerciseTracking: { screen: ExerciseTracking },
     Traxivity: { screen: TraxivityTabNavigator },
     UsefulContacts: { screen: UsefulContacts },
-    Questionnaire: { screen: Questionnaire }
+    Questionnaire: { screen: Questionnaire },
+    Video: { screen: Video }
   },
   {
       initialRouteName: "MainScreen",
@@ -58,23 +60,6 @@ const AuthStack = createStackNavigator(
     Authentication: { screen: Authentication }
   }
 );
-
-/*const prevGetStateForAction = AppNavigator.router.getStateForAction;
-
-AppNavigator.router.getStateForAction = (action, state) => {
-  // Do not allow to go back from Home
-  if (action.type === 'Navigation/BACK' && state && state.routes[state.index].routeName === 'MainScreen') {
-    return null;
-  }
-
-  // Do not allow to go back to Login
-  if (action.type === 'Navigation/BACK' && state) {
-    const newRoutes = state.routes.filter(r => r.routeName !== 'Authentication');
-    const newIndex = newRoutes.length - 1;
-    return prevGetStateForAction(action, { index: newIndex, routes: newRoutes });
-  }
-  return prevGetStateForAction(action, state);
-};*/
 
 const AppContainer = createAppContainer(
   createSwitchNavigator(

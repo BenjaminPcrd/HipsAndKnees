@@ -13,11 +13,11 @@ export default class App extends Component {
   render() {
     return (
       <ScrollView>
-        <MenuButton color='red' title='Exercise videos' subtitle='' onPress={() => this.props.navigation.navigate('ExerciseVideos')}/>
-        <MenuButton color='blue' title='Exercise tracking' subtitle='' onPress={() => this.props.navigation.navigate('ExerciseTracking')}/>
-        <MenuButton color='green' title='Traxivity' subtitle='' onPress={() => this.props.navigation.navigate('Traxivity')}/>
-        <MenuButton color='orange' title='Useful contacts' subtitle='' onPress={() => this.props.navigation.navigate('UsefulContacts')}/>
-        <MenuButton color='purple' title='Questionnaire' subtitle='' onPress={() => this.props.navigation.navigate('Questionnaire')}/>
+        <MenuButton color='rgb(237, 84, 57)' title='Exercise videos' subtitle='' onPress={() => this.props.navigation.navigate('ExerciseVideos')}/>
+        <MenuButton color='rgb(67, 230, 137)' title='Traxivity' subtitle='' onPress={() => this.props.navigation.navigate('Traxivity')}/>
+        <MenuButton color='rgb(72, 159, 217)' title='Exercise tracking' subtitle='' onPress={() => this.props.navigation.navigate('ExerciseTracking')}/>
+        <MenuButton color='rgb(255, 188, 70)' title='Useful contacts' subtitle='' onPress={() => this.props.navigation.navigate('UsefulContacts')}/>
+        <MenuButton color='rgb(144, 96, 219)' title='Questionnaire' subtitle='' onPress={() => this.props.navigation.navigate('Questionnaire')}/>
       </ScrollView>
     );
   }

@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import {
-  View,
-  Text
+  ScrollView,
+  Text,
+  FlatList
 } from 'react-native';
+import VideoCard from '../../components/VideoCard';
+
+const videoData = require('./videoData.json')
 
 export default class ExerciseVideos extends Component {
   static navigationOptions = {
@@ -11,11 +15,12 @@ export default class ExerciseVideos extends Component {
   
   render() {
     return (
-      <View>
-          <Text>
-            ExerciseVideos
-          </Text>
-      </View>
+      <FlatList
+        data={videoData}
+        renderItem={({ item }) => <VideoCard title={item.title} subtitle={item.subtitle} description={item.description} image={item.image} url={item.url} onPress={() => console.log('gfdgfd')}/>}
+        keyExtractor={item => item.id}
+      />
     );
   }
 }
+
