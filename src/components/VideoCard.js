@@ -52,13 +52,13 @@ export default class VideoCard extends Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
-      backgroundColor: "#FFF"
-    },
-    card: {
-      marginTop: 10,
-      marginLeft: 10,
-      marginRight: 10
-    }
-  });
+  container: {
+    backgroundColor: "#FFF"
+  },
+  card: {
+    marginTop: 10,
+    marginLeft: 10,
+    marginRight: 10
+  }
+});
   

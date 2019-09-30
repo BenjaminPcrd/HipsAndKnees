@@ -7,13 +7,13 @@ import {
 
 import WebView from 'react-native-webview';
 
-export default class Video extends Component {
+
+export default class VideoScreen extends Component {
   static navigationOptions = {
     title: 'Video',
   };
 
   render() {
-    
     return (
       <View style={styles.container}>
         <View style={styles.titleView}>
@@ -33,6 +33,8 @@ export default class Video extends Component {
     );
   }
 }
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -54,6 +56,9 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     fontWeight: 'bold'
-  }
+  },
+  video: {
+    flex: 1
+  },
 });
 
