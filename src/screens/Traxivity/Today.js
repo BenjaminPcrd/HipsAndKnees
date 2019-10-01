@@ -22,9 +22,8 @@ export default class Today extends Component {
         Scopes.FITNESS_LOCATION_READ_WRITE
       ],
     }
-    GoogleFit.authorize(options).then(res => console.log(res)).catch(err => console.log(err))
+    GoogleFit.authorize(options).then(res => this._getSteps()).catch(err => console.log(err))
 
-    this._getSteps()
   }
 
   _getSteps() {
