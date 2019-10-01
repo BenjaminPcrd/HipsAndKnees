@@ -7,6 +7,12 @@ import {
 import GoogleFit, { Scopes } from 'react-native-google-fit'
 
 export default class Today extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      steps: null
+    }
+  }
 
   componentDidMount() {
     const options = {
@@ -17,27 +23,26 @@ export default class Today extends Component {
       ],
     }
     GoogleFit.authorize(options).then(res => console.log(res)).catch(err => console.log(err))
-  }
 
-  _isEnabled() {
-    GoogleFit.isEnabled((err, res) => {
-      if(err) {
-        console.log(error)
-      } else {
-        console.log(res)
-      }
-    })
+    this._getSteps()
   }
 
   _getSteps() {
+    var start = new Date()
+    var end = new Date()
+    start.setHours(0, 0, 0, 0)
+    end.setHours(23, 59, 59, 999)
+
     const options = {
-      startDate: "2017-09-09T00:00:00.000Z", // required ISO8601Timestamp
-      endDate: new Date().toISOString() // required ISO8601Timestamp
+      startDate: start,
+      endDate: end
     };
     
     GoogleFit.getDailyStepCountSamples(options)
      .then((res) => {
-         console.log('Daily steps >>> ', res)
+         var result = res.filter(obj => obj.source === "com.google.android.gms:estimated_steps")[0].steps
+         console.log(result)
+         this.setState({steps: result[0].value})
      })
      .catch((err) => {console.warn(err)})
   }
@@ -45,8 +50,7 @@ export default class Today extends Component {
   render() {
     return (
       <View>
-        <Button title="check isEnabled" onPress={this._isEnabled}/>
-        <Button title="get steps" onPress={this._getSteps}/>
+        <Text>{this.state.steps}</Text>
       </View>
     );
   }
