@@ -7,10 +7,11 @@ import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 import Authentication from './screens/Authentication';
 import MainScreen from "./screens/MainScreen";
 import ExerciseVideos from "./screens/ExerciseVideos";
-import ExerciseTracking from "./screens/ExerciseTracking";
+import VideoList from "./screens/VideoList"
+import Video from "./screens/Video"
 import UsefulContacts from "./screens/UsefulContacts";
 import Questionnaire from "./screens/Questionnaire";
-import Video from "./screens/Video"
+
 
 import Today from "./screens/Traxivity/Today";
 import Weekly from "./screens/Traxivity/Weekly";
@@ -44,7 +45,8 @@ const AppStack = createStackNavigator(
   {
     MainScreen: { screen: MainScreen },
     ExerciseVideos: { screen: ExerciseVideos },
-    ExerciseTracking: { screen: ExerciseTracking },
+    VideoList: { screen: VideoList },
+    Video: { screen: Video },
     Traxivity: { screen: TraxivityTabNavigator },
     UsefulContacts: { screen: UsefulContacts },
     Questionnaire: { screen: Questionnaire },

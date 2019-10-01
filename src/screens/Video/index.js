@@ -18,10 +18,9 @@ export default class VideoScreen extends Component {
       <View style={styles.container}>
         <View style={styles.titleView}>
           <Text style={styles.title}>{this.props.navigation.getParam('item').title}</Text>
-          <Text>{this.props.navigation.getParam('item').subtitle}</Text>
         </View>
         <WebView
-          source={{html: '<iframe width="1280" height="720" src="' + this.props.navigation.getParam('item').url + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'}}
+          source={{html: '<iframe width="1280" height="720" src="https://www.youtube.com/embed/' + this.props.navigation.getParam('item').code + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'}}
           style={styles.webView}
         />
         <View style={styles.descriptionView}>
@@ -61,4 +60,3 @@ const styles = StyleSheet.create({
     flex: 1
   },
 });
-

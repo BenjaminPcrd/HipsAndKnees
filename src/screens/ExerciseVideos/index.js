@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import {
-  ScrollView,
-  Text,
   FlatList
 } from 'react-native';
-import VideoCard from '../../components/VideoCard';
+import TypeCard from '../../components/TypeCard';
 
-const videoData = require('./videoData.json')
+const data = require('./data.json')
 
 export default class ExerciseVideos extends Component {
   static navigationOptions = {
@@ -16,8 +14,8 @@ export default class ExerciseVideos extends Component {
   render() {
     return (
       <FlatList
-        data={videoData}
-        renderItem={({ item }) => <VideoCard title={item.title} subtitle={item.subtitle} description={item.description} image={item.image} url={item.url} onPress={() => this.props.navigation.navigate('Video', { item: item })}/>}
+        data={data}
+        renderItem={({ item }) => <TypeCard item={item} onPress={() => this.props.navigation.navigate('VideoList', { item: item })}/>}
         keyExtractor={item => item.id}
       />
     );

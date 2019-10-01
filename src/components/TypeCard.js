@@ -17,7 +17,7 @@ import {
 
 const deviceWidth = Dimensions.get('window').width
 
-export default class VideoCard extends Component {
+export default class TypeCard extends Component {
   render() {
     return (
       <TouchableOpacity onPress={this.props.onPress} activeOpacity={0.5} >
@@ -25,7 +25,8 @@ export default class VideoCard extends Component {
           <CardItem bordered>
             <Left>
               <Body>
-                <Text>{this.props.item.title}</Text>
+                <Text>{this.props.item.type}</Text>
+                <Text note>{this.props.item.subtitle}</Text>
               </Body>
             </Left>
           </CardItem>
@@ -34,11 +35,12 @@ export default class VideoCard extends Component {
               <Image
                 style={{
                   alignSelf: "center",
-                  resizeMode: "contain",
+                  resizeMode: "cover",
+                  marginVertical: 5,
                   width: deviceWidth / 1.18,
-                  height: 180,
+                  height: 150,
                 }}
-                source={{uri: "http://img.youtube.com/vi/" + this.props.item.code + "/mqdefault.jpg"}}
+                source={{uri: this.props.item.image}}
               />
               <Text>{this.props.item.description}</Text>
             </Body>
