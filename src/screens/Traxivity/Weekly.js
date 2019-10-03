@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import {
   View,
-  Text
+  Text,
+  StyleSheet
 } from 'react-native';
 
 import GoogleFit from 'react-native-google-fit'
@@ -10,15 +11,13 @@ export default class Weekly extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      steps: []
+      steps: [],
+      cals: [],
+      distances: []
     }
   }
 
   componentDidMount() {
-    this._getSteps()
-  }
-
-  _getSteps() {
     var start = new Date()
     var end = new Date()
     var nbDays = start.getDay();
@@ -27,6 +26,12 @@ export default class Weekly extends Component {
     start.setHours(0, 0, 0, 0)
     end.setHours(23, 59, 59, 999)
 
+    this._getSteps(start, end)
+    this._getKcal(start, end)
+    this._getDistance(start, end)
+  }
+
+  _getSteps(start, end) {
     const options = {
       startDate: start,
       endDate: end
@@ -35,24 +40,121 @@ export default class Weekly extends Component {
     GoogleFit.getDailyStepCountSamples(options)
      .then((res) => {
          var result = res.filter(obj => obj.source === "com.google.android.gms:estimated_steps")[0].steps
-         console.log(result)
          this.setState({steps: result})
      })
      .catch((err) => {console.warn(err)})
   }
 
+  _getKcal(start, end) {
+    const options = {
+      startDate: start,
+      endDate: end,
+      basalCalculation: false
+    };
+
+    GoogleFit.getDailyCalorieSamples(options, (err, res) => {
+      this.setState({cals: res})
+    })
+  }
+
+  _getDistance(start, end) {
+    const options = {
+      startDate: start,
+      endDate: end
+    };
+
+    GoogleFit.getDailyDistanceSamples(options, (err, res) => {
+      this.setState({distances: res})
+    })
+  }
+
+  numberWithCommas(x) {
+    x = x.toString();
+    var pattern = /(-?\d+)(\d{3})/;
+    while (pattern.test(x))
+        x = x.replace(pattern, "$1,$2");
+    return x;
+}
+
   render() {
-    console.log(this.state)
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+
+    var tabStep = this.state.steps.map(x => x.value)
+    var stepSum = 0
+    var StepAvg = 0
+    if (tabStep.length > 0) {
+      stepSum = tabStep.reduce(reducer)
+      StepAvg = stepSum / tabStep.length
+    }
+
+    var tabCal = this.state.cals.map(x => x.calorie)
+    var calSum = 0
+    if (tabCal.length > 0) {
+      calSum = tabCal.reduce(reducer)
+    }
+
+    var tabDistance = this.state.distances.map(x => x.distance)
+    var distSum = 0
+    if (tabDistance.length > 0) {
+      distSum = tabDistance.reduce(reducer)
+    }
+
+
     return (
-      <View>
-          <Text>mon: {this.state.steps[0] != null ? this.state.steps[0].value : 0}</Text>
-          <Text>tue: {this.state.steps[1] != null ? this.state.steps[1].value : 0}</Text>
-          <Text>wed: {this.state.steps[2] != null ? this.state.steps[2].value : 0}</Text>
-          <Text>thu: {this.state.steps[3] != null ? this.state.steps[3].value : 0}</Text>
-          <Text>fri: {this.state.steps[4] != null ? this.state.steps[4].value : 0}</Text>
-          <Text>sat: {this.state.steps[5] != null ? this.state.steps[5].value : 0}</Text>
-          <Text>sun: {this.state.steps[6] != null ? this.state.steps[6].value : 0}</Text>
+      <View style={{flex: 1}}>
+
+      <View style={{flex: 1}}>
+        <Text>mon: {this.state.steps[0] != null ? this.state.steps[0].value : 0}</Text>
+        <Text>tue: {this.state.steps[1] != null ? this.state.steps[1].value : 0}</Text>
+        <Text>wed: {this.state.steps[2] != null ? this.state.steps[2].value : 0}</Text>
+        <Text>thu: {this.state.steps[3] != null ? this.state.steps[3].value : 0}</Text>
+        <Text>fri: {this.state.steps[4] != null ? this.state.steps[4].value : 0}</Text>
+        <Text>sat: {this.state.steps[5] != null ? this.state.steps[5].value : 0}</Text>
+        <Text>sun: {this.state.steps[6] != null ? this.state.steps[6].value : 0}</Text>
+      </View>
+
+        <View style={{flex: 1}}>
+          <View style={{flex: 1, flexDirection: 'row'}}>
+            <View style={styles.container}>
+              <Text style={styles.bigtext}>{this.numberWithCommas(Math.round(StepAvg))}</Text>
+              <Text style={styles.littleText}>Avg weekly</Text>
+            </View>
+            <View style={styles.container}>
+              <Text style={styles.bigtext}>{this.numberWithCommas(stepSum)}</Text>
+              <Text style={styles.littleText}>This week</Text>
+            </View>
+          </View>
+          <View style={{flex: 1, flexDirection: 'row'}}>
+            <View style={styles.container}>
+              <Text style={styles.bigtext}>{this.numberWithCommas(Math.round(calSum))}</Text>
+              <Text style={styles.littleText}>Kcal burned</Text>
+            </View>
+            <View style={styles.container}>
+              <Text style={styles.bigtext}>{Math.round(distSum/1000)}</Text>
+              <Text style={styles.littleText}>Kilometers</Text>
+            </View>
+          </View>
+        </View>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: .5,
+    borderColor: 'rgba(0, 0, 0, 0.1)'
+  },
+  bigtext: {
+    fontSize: 35,
+    fontWeight: 'bold'
+  },
+  littleText: {
+    fontSize: 15
+  }
+});
+
+/**/

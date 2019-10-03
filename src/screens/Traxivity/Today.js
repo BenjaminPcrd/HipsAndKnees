@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import {
   View,
   Text,
-  Button
+  StyleSheet
 } from 'react-native';
 import GoogleFit, { Scopes } from 'react-native-google-fit'
 
@@ -40,7 +40,6 @@ export default class Today extends Component {
     GoogleFit.getDailyStepCountSamples(options)
      .then((res) => {
          var result = res.filter(obj => obj.source === "com.google.android.gms:estimated_steps")[0].steps
-         console.log(result)
          this.setState({steps: result[0].value})
      })
      .catch((err) => {console.warn(err)})
@@ -48,9 +47,21 @@ export default class Today extends Component {
 
   render() {
     return (
-      <View>
-        <Text>{this.state.steps}</Text>
+      <View style={styles.container}>
+        <Text style={styles.text}>{this.state.steps}</Text>
+        <Text>steps</Text>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  text: {
+    fontSize: 50
+  }
+});
