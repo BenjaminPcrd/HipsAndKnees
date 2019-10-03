@@ -16,7 +16,7 @@ export default class App extends Component {
           Alert.alert('Log out', 'Do you want to log out?', [
             {text: 'Cancel',style: 'cancel'},
             {text: 'YES', onPress: async () => {
-              await GoogleSignin.configure()
+              await GoogleSignin.configure()  
               await GoogleSignin.signOut()
               navigation.navigate('Authentication')
             }}

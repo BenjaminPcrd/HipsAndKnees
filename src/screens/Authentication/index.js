@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import {
   View,
-  StyleSheet
+  StyleSheet,
+  ActivityIndicator
 } from 'react-native';
 
-import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
+import { GoogleSignin, GoogleSigninButton, statusCodes } from 'react-native-google-signin';
 import firebase from 'react-native-firebase'
 
 export default class Authentication extends Component {
@@ -12,7 +13,16 @@ export default class Authentication extends Component {
     title: 'Authentication',
   };
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      isLoading: false
+    }
+  }
+
   async _signIn() {
+    this.setState({isLoading: true})
+
     await GoogleSignin.configure({
       scopes: [
         "https://www.googleapis.com/auth/userinfo.profile",
@@ -23,13 +33,26 @@ export default class Authentication extends Component {
       ],
       webClientId: '803018449297-k52r7oh2s96n8nbcec7ncf4k6f8ga77a.apps.googleusercontent.com'
     })
-    const data = await GoogleSignin.signIn();
-    const credential = firebase.auth.GoogleAuthProvider.credential(data.idToken, 'zRioRfW4SqMzmUJ_EKY1pzzo')
-    const firebaseUserCredential = await firebase.auth().signInWithCredential(credential);
-    
-    if(firebaseUserCredential.user._auth._authResult) {
-      this.props.navigation.navigate('MainScreen')
+    try {
+      const data = await GoogleSignin.signIn()
+      const credential = firebase.auth.GoogleAuthProvider.credential(data.idToken, 'zRioRfW4SqMzmUJ_EKY1pzzo')
+      const firebaseUserCredential = await firebase.auth().signInWithCredential(credential);
+
+      if(firebaseUserCredential.user._auth._authResult) {
+        this.props.navigation.navigate('MainScreen')
+      }
+    } catch (error) {
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        this.setState({isLoading: false})
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        // operation (f.e. sign in) is in progress already
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        // play services not available or outdated
+      } else {
+        // some other error happened
+      }
     }
+
   }
 
   async componentDidMount() {
@@ -40,13 +63,20 @@ export default class Authentication extends Component {
   }
 
   render() {
+    if(this.state.isLoading) {
+      return(
+        <View style={styles.container}>
+          <ActivityIndicator size='large'/>
+        </View>
+      );
+    }
     return (
       <View style={styles.container}>
-          <GoogleSigninButton
-            style={{ width: 300, height: 100 }}
-            size={GoogleSigninButton.Size.Wide}
-            color={GoogleSigninButton.Color.Dark}
-            onPress={() => this._signIn()}/>
+        <GoogleSigninButton
+          style={{ width: 300, height: 100 }}
+          size={GoogleSigninButton.Size.Wide}
+          color={GoogleSigninButton.Color.light}
+          onPress={() => this._signIn()}/>
       </View>
     );
   }

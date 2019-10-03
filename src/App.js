@@ -32,7 +32,7 @@ const TraxivityTabNavigator = createMaterialTopTabNavigator(
         color: 'black'
       },
       indicatorStyle: {
-        backgroundColor: 'green'
+        backgroundColor: 'rgb(0, 220, 169)'
       },
       style: {
         backgroundColor: 'white'
