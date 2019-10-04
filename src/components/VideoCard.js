@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {
-    Image,
+    View,
     Dimensions,
     StyleSheet
 } from 'react-native';
@@ -15,12 +15,12 @@ import {
     Body
   } from 'native-base';
 
-const deviceWidth = Dimensions.get('window').width
+import WebView from 'react-native-webview';
 
 export default class VideoCard extends Component {
   render() {
     return (
-      <TouchableOpacity onPress={this.props.onPress} activeOpacity={0.5} >
+      <View>
         <Card style={styles.card}>
           <CardItem bordered>
             <Left>
@@ -30,21 +30,16 @@ export default class VideoCard extends Component {
             </Left>
           </CardItem>
           <CardItem>
-            <Body>
-              <Image
-                style={{
-                  alignSelf: "center",
-                  resizeMode: "contain",
-                  width: deviceWidth / 1.18,
-                  height: 180,
-                }}
-                source={{uri: "http://img.youtube.com/vi/" + this.props.item.code + "/mqdefault.jpg"}}
-              />
-              <Text>{this.props.item.description}</Text>
-            </Body>
+            <WebView
+              source={{html: '<iframe width="1280" height="720" src="https://www.youtube.com/embed/' + this.props.item.code + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'}}
+              style={{height: 200}}
+            />
+          </CardItem>
+          <CardItem>
+            <Text>{this.props.item.description}</Text>
           </CardItem>
         </Card>
-      </TouchableOpacity>
+      </View>
     );
   }
 }

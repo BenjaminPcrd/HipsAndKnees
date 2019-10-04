@@ -8,7 +8,6 @@ import Authentication from './screens/Authentication';
 import MainScreen from "./screens/MainScreen";
 import ExerciseVideos from "./screens/ExerciseVideos";
 import VideoList from "./screens/VideoList"
-import Video from "./screens/Video"
 import UsefulContacts from "./screens/UsefulContacts";
 import Questionnaire from "./screens/Questionnaire";
 
@@ -46,11 +45,9 @@ const AppStack = createStackNavigator(
     MainScreen: { screen: MainScreen },
     ExerciseVideos: { screen: ExerciseVideos },
     VideoList: { screen: VideoList },
-    Video: { screen: Video },
     Traxivity: { screen: TraxivityTabNavigator },
     UsefulContacts: { screen: UsefulContacts },
     Questionnaire: { screen: Questionnaire },
-    Video: { screen: Video }
   },
   {
       initialRouteName: "MainScreen",

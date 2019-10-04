@@ -4,7 +4,7 @@
     "type": "Range of Movement",
     "subtitle": "Exercises to improve range of movement",
     "description": "Designed for patients in the subacute to late stages of post-operation.",
-    "image": "https://picsum.photos/200/300",
+    "image": "rangeOfMovement.jpg",
     "videos": [
       {"id": "1", "title": "video1", "description": "description video1", "code": "7jbQbYNZayQ"},
       {"id": "2", "title": "video2", "description": "description video2", "code": "7jbQbYNZayQ"},
@@ -16,7 +16,7 @@
     "type": "Cardiovascular",
     "subtitle": "Exercises for cardiovascular workout",
     "description": "Designed for patients in the subacute to late stages of post-operation.",
-    "image": "https://picsum.photos/200/300",
+    "image": "rangeOfMovement.jpg",
     "videos": [
       {"id": "1", "title": "video1", "description": "description video1", "code": "7jbQbYNZayQ"},
       {"id": "2", "title": "video2", "description": "description video2", "code": "7jbQbYNZayQ"},
@@ -28,7 +28,7 @@
     "type": "Strength",
     "subtitle": "Exercises for strengthening muscles",
     "description": "Designed for patients in the subacute to late stages of post-operation.",
-    "image": "https://picsum.photos/200/300",
+    "image": "rangeOfMovement.jpg",
     "videos": [
       {"id": "1", "title": "video1", "description": "description video1", "code": "7jbQbYNZayQ"},
       {"id": "2", "title": "video2", "description": "description video2", "code": "7jbQbYNZayQ"},
@@ -40,7 +40,7 @@
     "type": "Balance",
     "subtitle": "Exercises for improving balanc",
     "description": "Designed for patients in the subacute to late stages of post-operation.",
-    "image": "https://picsum.photos/200/300",
+    "image": "rangeOfMovement.jpg",
     "videos": [
       {"id": "1", "title": "video1", "description": "description video1", "code": "7jbQbYNZayQ"},
       {"id": "2", "title": "video2", "description": "description video2", "code": "7jbQbYNZayQ"},
@@ -52,7 +52,7 @@
     "type": "Stretches",
     "subtitle": "Stretches for warming up",
     "description": "Designed for patients in the subacute to late stages of post-operation.",
-    "image": "https://picsum.photos/200/300",
+    "image": "rangeOfMovement.jpg",
     "videos": [
       {"id": "1", "title": "video1", "description": "description video1", "code": "7jbQbYNZayQ"},
       {"id": "2", "title": "video2", "description": "description video2", "code": "7jbQbYNZayQ"},

@@ -16,7 +16,7 @@ export default class Authentication extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      isLoading: false
+      isLoading: true
     }
   }
 
@@ -59,6 +59,8 @@ export default class Authentication extends Component {
     const isSignedIn = await GoogleSignin.isSignedIn();
     if(isSignedIn) {
       this.props.navigation.navigate('MainScreen')
+    } else {
+      this.setState({isLoading: false})
     }
   }
 
