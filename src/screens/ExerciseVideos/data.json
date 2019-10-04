@@ -6,9 +6,9 @@
     "description": "Designed for patients in the subacute to late stages of post-operation.",
     "image": "rangeOfMovement.jpg",
     "videos": [
-      {"id": "1", "title": "video1", "description": "description video1", "code": "7jbQbYNZayQ"},
-      {"id": "2", "title": "video2", "description": "description video2", "code": "7jbQbYNZayQ"},
-      {"id": "3", "title": "video3", "description": "description video3", "code": "7jbQbYNZayQ"}
+      {"id": "1", "title": "Passive Range of Motion (Knee Joint)", "description": "Learn about passive range of motion assessment of the knee joint!", "code": "SeF3Hmw7k3U"},
+      {"id": "2", "title": "Active Range of Motion (Knee Joint)", "description": "description video2", "code": "G6eDhgTmNIA"},
+      {"id": "3", "title": "video3", "description": "description video3", "code": "G6eDhgTmNIA"}
     ]
   },
   {
@@ -16,11 +16,11 @@
     "type": "Cardiovascular",
     "subtitle": "Exercises for cardiovascular workout",
     "description": "Designed for patients in the subacute to late stages of post-operation.",
-    "image": "rangeOfMovement.jpg",
+    "image": "cardiovascular.jpg",
     "videos": [
-      {"id": "1", "title": "video1", "description": "description video1", "code": "7jbQbYNZayQ"},
-      {"id": "2", "title": "video2", "description": "description video2", "code": "7jbQbYNZayQ"},
-      {"id": "3", "title": "video3", "description": "description video3", "code": "7jbQbYNZayQ"}
+      {"id": "1", "title": "video1", "description": "description video1", "code": "G6eDhgTmNIA"},
+      {"id": "2", "title": "video2", "description": "description video2", "code": "G6eDhgTmNIA"},
+      {"id": "3", "title": "video3", "description": "description video3", "code": "G6eDhgTmNIA"}
     ]
   },
   {
@@ -30,9 +30,9 @@
     "description": "Designed for patients in the subacute to late stages of post-operation.",
     "image": "rangeOfMovement.jpg",
     "videos": [
-      {"id": "1", "title": "video1", "description": "description video1", "code": "7jbQbYNZayQ"},
-      {"id": "2", "title": "video2", "description": "description video2", "code": "7jbQbYNZayQ"},
-      {"id": "3", "title": "video3", "description": "description video3", "code": "7jbQbYNZayQ"}
+      {"id": "1", "title": "video1", "description": "description video1", "code": "G6eDhgTmNIA"},
+      {"id": "2", "title": "video2", "description": "description video2", "code": "G6eDhgTmNIA"},
+      {"id": "3", "title": "video3", "description": "description video3", "code": "G6eDhgTmNIA"}
     ]
   },
   {
@@ -42,9 +42,9 @@
     "description": "Designed for patients in the subacute to late stages of post-operation.",
     "image": "rangeOfMovement.jpg",
     "videos": [
-      {"id": "1", "title": "video1", "description": "description video1", "code": "7jbQbYNZayQ"},
-      {"id": "2", "title": "video2", "description": "description video2", "code": "7jbQbYNZayQ"},
-      {"id": "3", "title": "video3", "description": "description video3", "code": "7jbQbYNZayQ"}
+      {"id": "1", "title": "video1", "description": "description video1", "code": "G6eDhgTmNIA"},
+      {"id": "2", "title": "video2", "description": "description video2", "code": "G6eDhgTmNIA"},
+      {"id": "3", "title": "video3", "description": "description video3", "code": "G6eDhgTmNIA"}
     ]
   },
   {
@@ -54,9 +54,9 @@
     "description": "Designed for patients in the subacute to late stages of post-operation.",
     "image": "rangeOfMovement.jpg",
     "videos": [
-      {"id": "1", "title": "video1", "description": "description video1", "code": "7jbQbYNZayQ"},
-      {"id": "2", "title": "video2", "description": "description video2", "code": "7jbQbYNZayQ"},
-      {"id": "3", "title": "video3", "description": "description video3", "code": "7jbQbYNZayQ"}
+      {"id": "1", "title": "video1", "description": "description video1", "code": "G6eDhgTmNIA"},
+      {"id": "2", "title": "video2", "description": "description video2", "code": "G6eDhgTmNIA"},
+      {"id": "3", "title": "video3", "description": "description video3", "code": "G6eDhgTmNIA"}
     ]
   }
 ]
