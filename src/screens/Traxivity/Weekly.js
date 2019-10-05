@@ -5,7 +5,7 @@ import {
   StyleSheet
 } from 'react-native';
 
-import GoogleFit from 'react-native-google-fit'
+import { getSteps, getCals, getDists } from '../../api/googleFitApi'
 
 export default class Weekly extends Component {
   constructor(props) {
@@ -26,44 +26,20 @@ export default class Weekly extends Component {
     start.setHours(0, 0, 0, 0)
     end.setHours(23, 59, 59, 999)
 
-    this._getSteps(start, end)
-    this._getKcal(start, end)
-    this._getDistance(start, end)
-  }
-
-  _getSteps(start, end) {
     const options = {
       startDate: start,
       endDate: end
     };
-    
-    GoogleFit.getDailyStepCountSamples(options)
-     .then((res) => {
-         var result = res.filter(obj => obj.source === "com.google.android.gms:estimated_steps")[0].steps
-         this.setState({steps: result})
-     })
-     .catch((err) => {console.warn(err)})
-  }
 
-  _getKcal(start, end) {
-    const options = {
-      startDate: start,
-      endDate: end,
-      basalCalculation: false
-    };
+    getSteps(options, res => {
+      this.setState({steps: res})
+    })
 
-    GoogleFit.getDailyCalorieSamples(options, (err, res) => {
+    getCals({...options, basalCalculation: false}, res => {
       this.setState({cals: res})
     })
-  }
 
-  _getDistance(start, end) {
-    const options = {
-      startDate: start,
-      endDate: end
-    };
-
-    GoogleFit.getDailyDistanceSamples(options, (err, res) => {
+    getDists(options, res => {
       this.setState({distances: res})
     })
   }
@@ -74,7 +50,7 @@ export default class Weekly extends Component {
     while (pattern.test(x))
         x = x.replace(pattern, "$1,$2");
     return x;
-}
+  }
 
   render() {
     const reducer = (accumulator, currentValue) => accumulator + currentValue;

@@ -6,11 +6,15 @@ import {
 } from 'react-native';
 import GoogleFit, { Scopes } from 'react-native-google-fit'
 
+import { getSteps, getCals, getDists } from '../../api/googleFitApi'
+
 export default class Today extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      steps: null
+      steps: null,
+      cals: null,
+      dists: null
     }
   }
 
@@ -22,11 +26,11 @@ export default class Today extends Component {
         Scopes.FITNESS_LOCATION_READ_WRITE
       ],
     }
-    GoogleFit.authorize(options).then(res => this._getSteps()).catch(err => console.log(err))
+    GoogleFit.authorize(options).then(res => this._getData()).catch(err => console.log(err))
 
   }
 
-  _getSteps() {
+  _getData() {
     var start = new Date()
     var end = new Date()
     start.setHours(0, 0, 0, 0)
@@ -36,13 +40,18 @@ export default class Today extends Component {
       startDate: start,
       endDate: end
     };
-    
-    GoogleFit.getDailyStepCountSamples(options)
-     .then((res) => {
-         var result = res.filter(obj => obj.source === "com.google.android.gms:estimated_steps")[0].steps
-         this.setState({steps: result[0].value})
-     })
-     .catch((err) => {console.warn(err)})
+
+    getSteps(options, res => {
+      this.setState({ steps: res[0].value})
+    })
+
+    getCals({...options, basalCalculation: false}, res => {
+      this.setState({ cals: res.calorie })
+    })
+
+    getDists(options, res => {
+      this.setState({ dists: res.distance })
+    })
   }
 
   render() {
