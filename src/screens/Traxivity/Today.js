@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import {
   View,
-  Text,
-  StyleSheet
+  Text
 } from 'react-native';
 import GoogleFit, { Scopes } from 'react-native-google-fit'
 
 import { getSteps, getCals, getDists } from '../../api/googleFitApi'
+import TraxivityDataTab from '../../components/TraxivityDataTab'
 
 export default class Today extends Component {
   constructor(props) {
@@ -46,31 +46,32 @@ export default class Today extends Component {
     })
 
     getCals({...options, basalCalculation: false}, res => {
-      this.setState({ cals: res.calorie })
+      this.setState({ cals: res[0].calorie })
     })
 
     getDists(options, res => {
-      this.setState({ dists: res.distance })
+      this.setState({ dists: res[0].distance })
     })
   }
 
   render() {
+    var data = {
+      numBox1: 0,
+      textBox1: "Of Daily Goal",
+      numBox2: this.state.steps,
+      textBox2: "Steps Today",
+      numBox3: this.state.cals,
+      textBox3: "Kcal burned",
+      numBox4: this.state.dists/1000,
+      textBox4: "Kilometers"
+    }
+
     return (
-      <View style={styles.container}>
-        <Text style={styles.text}>{this.state.steps}</Text>
-        <Text>steps</Text>
+      <View style={{flex: 1}}>
+        <Text style={{flex: 1}}>{this.state.steps}</Text>
+        <TraxivityDataTab data={data}/>
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  text: {
-    fontSize: 50
-  }
-});

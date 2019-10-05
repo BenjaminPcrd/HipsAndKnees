@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import {
   View,
-  Text,
-  StyleSheet
+  Text
 } from 'react-native';
 
 import { getSteps, getCals, getDists } from '../../api/googleFitApi'
+import TraxivityDataTab from '../../components/TraxivityDataTab'
+
 
 export default class Weekly extends Component {
   constructor(props) {
@@ -44,14 +45,6 @@ export default class Weekly extends Component {
     })
   }
 
-  numberWithCommas(x) {
-    x = x.toString();
-    var pattern = /(-?\d+)(\d{3})/;
-    while (pattern.test(x))
-        x = x.replace(pattern, "$1,$2");
-    return x;
-  }
-
   render() {
     const reducer = (accumulator, currentValue) => accumulator + currentValue;
 
@@ -72,65 +65,34 @@ export default class Weekly extends Component {
     var tabDistance = this.state.distances.map(x => x.distance)
     var distSum = 0
     if (tabDistance.length > 0) {
-      distSum = tabDistance.reduce(reducer)
+      distSum = tabDistance.reduce(reducer)/1000
     }
 
+    var data = {
+      numBox1: StepAvg,
+      textBox1: "Avg Weekly",
+      numBox2: stepSum,
+      textBox2: "This Week",
+      numBox3: calSum,
+      textBox3: "Kcal Burned",
+      numBox4: distSum,
+      textBox4: "Kilometers"
+    }
 
     return (
       <View style={{flex: 1}}>
-
-      <View style={{flex: 1}}>
-        <Text>mon: {this.state.steps[0] != null ? this.state.steps[0].value : 0}</Text>
-        <Text>tue: {this.state.steps[1] != null ? this.state.steps[1].value : 0}</Text>
-        <Text>wed: {this.state.steps[2] != null ? this.state.steps[2].value : 0}</Text>
-        <Text>thu: {this.state.steps[3] != null ? this.state.steps[3].value : 0}</Text>
-        <Text>fri: {this.state.steps[4] != null ? this.state.steps[4].value : 0}</Text>
-        <Text>sat: {this.state.steps[5] != null ? this.state.steps[5].value : 0}</Text>
-        <Text>sun: {this.state.steps[6] != null ? this.state.steps[6].value : 0}</Text>
-      </View>
-
         <View style={{flex: 1}}>
-          <View style={{flex: 1, flexDirection: 'row'}}>
-            <View style={styles.container}>
-              <Text style={styles.bigtext}>{this.numberWithCommas(Math.round(StepAvg))}</Text>
-              <Text style={styles.littleText}>Avg weekly</Text>
-            </View>
-            <View style={styles.container}>
-              <Text style={styles.bigtext}>{this.numberWithCommas(stepSum)}</Text>
-              <Text style={styles.littleText}>This week</Text>
-            </View>
-          </View>
-          <View style={{flex: 1, flexDirection: 'row'}}>
-            <View style={styles.container}>
-              <Text style={styles.bigtext}>{this.numberWithCommas(Math.round(calSum))}</Text>
-              <Text style={styles.littleText}>Kcal burned</Text>
-            </View>
-            <View style={styles.container}>
-              <Text style={styles.bigtext}>{Math.round(distSum/1000)}</Text>
-              <Text style={styles.littleText}>Kilometers</Text>
-            </View>
-          </View>
+          <Text>mon: {this.state.steps[0] != null ? this.state.steps[0].value : 0}</Text>
+          <Text>tue: {this.state.steps[1] != null ? this.state.steps[1].value : 0}</Text>
+          <Text>wed: {this.state.steps[2] != null ? this.state.steps[2].value : 0}</Text>
+          <Text>thu: {this.state.steps[3] != null ? this.state.steps[3].value : 0}</Text>
+          <Text>fri: {this.state.steps[4] != null ? this.state.steps[4].value : 0}</Text>
+          <Text>sat: {this.state.steps[5] != null ? this.state.steps[5].value : 0}</Text>
+          <Text>sun: {this.state.steps[6] != null ? this.state.steps[6].value : 0}</Text>
         </View>
+
+        <TraxivityDataTab data={data}/>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderWidth: .5,
-    borderColor: 'rgba(0, 0, 0, 0.1)'
-  },
-  bigtext: {
-    fontSize: 35,
-    fontWeight: 'bold'
-  },
-  littleText: {
-    fontSize: 15
-  }
-});
-
-/**/
