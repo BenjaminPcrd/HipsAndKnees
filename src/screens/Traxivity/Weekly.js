@@ -79,6 +79,7 @@ export default class Weekly extends Component {
       textBox4: "Kilometers"
     }
 
+    console.log(this.state)
     return (
       <View style={{flex: 1}}>
         <View style={{flex: 1}}>

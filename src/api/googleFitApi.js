@@ -9,7 +9,7 @@ export function getSteps(options, callback) {
     .catch((err) => {console.warn(err)})
 }
 
-export function getCals(options,callback) {
+export function getCals(options, callback) {
   GoogleFit.getDailyCalorieSamples(options, (err, res) => {
     callback(res)
   })
