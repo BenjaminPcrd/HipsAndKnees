@@ -30,7 +30,7 @@ export default class Monthly extends Component {
       endDate: end
     };
 
-    getSteps(options, res => {
+    getSteps(options, null, res => {
       this.setState({steps: res})
     })
 

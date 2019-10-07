@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {
   View,
+  Button
 } from 'react-native';
 import GoogleFit, { Scopes } from 'react-native-google-fit'
 
@@ -17,6 +18,7 @@ export default class Today extends Component {
       cals: null,
       dists: null
     }
+    this.tab = []
   }
 
   componentDidMount() {
@@ -31,7 +33,7 @@ export default class Today extends Component {
 
   }
 
-  _getData() {
+  async _getData() {
     var start = new Date()
     var end = new Date()
     start.setHours(0, 0, 0, 0)
@@ -42,7 +44,7 @@ export default class Today extends Component {
       endDate: end
     };
 
-    getSteps(options, res => {
+    getSteps(options, null, res => {
       this.setState({ steps: res[0].value})
     })
 
@@ -53,6 +55,22 @@ export default class Today extends Component {
     getDists(options, res => {
       this.setState({ dists: res[0].distance })
     })
+
+    for(i = 0; i < 24; i++) {
+      start.setHours(i, 0, 0, 0)
+      end.setHours(i, 59, 59, 999)
+      var optionsTab = {
+        startDate: start,
+        endDate: end
+      };
+      getSteps(optionsTab, i, (res, index) => {
+        this.tab[index] = res.length > 0 ? res[0] : {date: "", value: 0}
+        if(index == 23) {
+          this.forceUpdate()
+        }
+      })
+      
+    }
   }
 
   render() {
@@ -60,16 +78,21 @@ export default class Today extends Component {
       numBox1: 0,
       textBox1: "Of Daily Goal",
       numBox2: this.state.steps,
-      textBox2: "Steps Today",
+      textBox2: "Steps Today",  
       numBox3: this.state.cals,
       textBox3: "Kcal burned",
       numBox4: this.state.dists/1000,
       textBox4: "Kilometers"
     }
 
+    var formatter = [];
+    for (var i = 0; i < 24; i++) {
+      formatter.push(i.toString());
+    }
+
     return (
       <View style={{flex: 1}}>
-        
+        <Chart tabStep={this.tab} formatter={formatter} granularity={4}/>
         <TraxivityDataTab data={BoxData}/>
       </View>
     );

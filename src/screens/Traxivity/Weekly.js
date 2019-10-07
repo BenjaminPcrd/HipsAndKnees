@@ -33,7 +33,7 @@ export default class Weekly extends Component {
       endDate: end
     };
 
-    getSteps(options, res => {
+    getSteps(options, null, res => {
       this.setState({steps: res})
     })
 
