@@ -8,6 +8,7 @@ import { getSteps, getCals, getDists } from '../../api/googleFitApi'
 import TraxivityDataTab from '../../components/TraxivityDataTab'
 import Chart from '../../components/Chart'
 
+console.disableYellowBox = true;
 export default class Today extends Component {
   constructor(props) {
     super(props)

@@ -10,10 +10,9 @@ import { BarChart } from 'react-native-charts-wrapper';
 
 export default class Chart extends Component {
   render() {
-    //values: this.props.tabStep ? this.props.tabStep.map(item => item.value) : [],
     const data = {
       dataSets: [{
-        values: [1235, 253, 2565, 1235],
+        values: this.props.tabStep ? this.props.tabStep.map(item => item.value) : [],
         label: 'Number of steps',
         config: {
           color: processColor('rgba(0, 220, 169, 0.9)')
@@ -32,20 +31,21 @@ export default class Chart extends Component {
         axisLineWidth: 2,
         axisLineColor: processColor('rgb(0, 0, 0)'),
         textSize: 15,
-        spaceBottom: 10
+        spaceBottom: 10,
+        valueFormatter: " "
       }
     }
 
     const xAxis = {
       position: "BOTTOM",
-      valueFormatter: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+      valueFormatter: this.props.formatter,
       drawGridLines: false,
       drawAxisLine: true,
       axisLineWidth: 2,
       axisLineColor: processColor('rgb(0, 0, 0)'),
       textSize: 15,
       granularityEnabled: true,
-      granularity : 1,
+      granularity : this.props.granularity,
     }
 
     return (
@@ -56,7 +56,7 @@ export default class Chart extends Component {
         xAxis={xAxis}
         chartDescription={{text: ''}}
         legend={{enabled: false}}
-        visibleRange={{x: { min: 7 }}}
+        visibleRange={{x: { min: this.props.formatter.length }}}
         touchEnabled={false}
       />
     );

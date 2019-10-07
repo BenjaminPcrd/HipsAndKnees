@@ -77,9 +77,14 @@ export default class Monthly extends Component {
       textBox4: "Kilometers"
     }
 
+    var formatter = [];
+    for (var i = 1; i <= 31; i++) {
+      formatter.push(i.toString());
+    }
+
     return (
       <View style={{flex: 1}}>
-        
+        <Chart tabStep={this.state.steps} formatter={formatter} granularity={5}/>
         <TraxivityDataTab data={data}/>
       </View>
     );

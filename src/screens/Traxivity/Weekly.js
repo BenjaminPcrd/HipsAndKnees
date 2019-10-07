@@ -79,10 +79,12 @@ export default class Weekly extends Component {
       numBox4: distSum,
       textBox4: "Kilometers"
     }
+
+    var formatter = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
     
     return (
       <View style={{flex: 1}}>
-        <Chart tabStep={this.state.steps}/>
+        <Chart tabStep={this.state.steps} formatter={formatter} granularity={1}/>
         <TraxivityDataTab data={boxData}/>
       </View>
     );
