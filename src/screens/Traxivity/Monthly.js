@@ -79,7 +79,7 @@ export default class Monthly extends Component {
 
     return (
       <View style={{flex: 1}}>
-        <Chart />
+        
         <TraxivityDataTab data={data}/>
       </View>
     );

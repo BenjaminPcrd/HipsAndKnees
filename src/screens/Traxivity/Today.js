@@ -68,7 +68,7 @@ export default class Today extends Component {
 
     return (
       <View style={{flex: 1}}>
-        <Chart />
+        
         <TraxivityDataTab data={BoxData}/>
       </View>
     );

@@ -79,10 +79,10 @@ export default class Weekly extends Component {
       numBox4: distSum,
       textBox4: "Kilometers"
     }
-
+    
     return (
       <View style={{flex: 1}}>
-        <Chart />
+        <Chart tabStep={this.state.steps}/>
         <TraxivityDataTab data={boxData}/>
       </View>
     );
