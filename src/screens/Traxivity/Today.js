@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import {
   View,
-  Text
 } from 'react-native';
 import GoogleFit, { Scopes } from 'react-native-google-fit'
 
 import { getSteps, getCals, getDists } from '../../api/googleFitApi'
 import TraxivityDataTab from '../../components/TraxivityDataTab'
+import Chart from '../../components/Chart'
 
 export default class Today extends Component {
   constructor(props) {
@@ -55,7 +55,7 @@ export default class Today extends Component {
   }
 
   render() {
-    var data = {
+    var BoxData = {
       numBox1: 0,
       textBox1: "Of Daily Goal",
       numBox2: this.state.steps,
@@ -68,8 +68,8 @@ export default class Today extends Component {
 
     return (
       <View style={{flex: 1}}>
-        <Text style={{flex: 1}}>{this.state.steps}</Text>
-        <TraxivityDataTab data={data}/>
+        <Chart />
+        <TraxivityDataTab data={BoxData}/>
       </View>
     );
   }

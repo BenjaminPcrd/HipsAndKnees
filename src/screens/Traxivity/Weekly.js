@@ -6,6 +6,7 @@ import {
 
 import { getSteps, getCals, getDists } from '../../api/googleFitApi'
 import TraxivityDataTab from '../../components/TraxivityDataTab'
+import Chart from '../../components/Chart'
 
 
 export default class Weekly extends Component {
@@ -68,7 +69,7 @@ export default class Weekly extends Component {
       distSum = tabDistance.reduce(reducer)/1000
     }
 
-    var data = {
+    var boxData = {
       numBox1: StepAvg,
       textBox1: "Avg Weekly",
       numBox2: stepSum,
@@ -79,20 +80,10 @@ export default class Weekly extends Component {
       textBox4: "Kilometers"
     }
 
-    console.log(this.state)
     return (
       <View style={{flex: 1}}>
-        <View style={{flex: 1}}>
-          <Text>mon: {this.state.steps[0] != null ? this.state.steps[0].value : 0}</Text>
-          <Text>tue: {this.state.steps[1] != null ? this.state.steps[1].value : 0}</Text>
-          <Text>wed: {this.state.steps[2] != null ? this.state.steps[2].value : 0}</Text>
-          <Text>thu: {this.state.steps[3] != null ? this.state.steps[3].value : 0}</Text>
-          <Text>fri: {this.state.steps[4] != null ? this.state.steps[4].value : 0}</Text>
-          <Text>sat: {this.state.steps[5] != null ? this.state.steps[5].value : 0}</Text>
-          <Text>sun: {this.state.steps[6] != null ? this.state.steps[6].value : 0}</Text>
-        </View>
-
-        <TraxivityDataTab data={data}/>
+        <Chart />
+        <TraxivityDataTab data={boxData}/>
       </View>
     );
   }

@@ -6,7 +6,7 @@ import {
 
 import { getSteps, getCals, getDists } from '../../api/googleFitApi'
 import TraxivityDataTab from '../../components/TraxivityDataTab'
-
+import Chart from '../../components/Chart'
 
 export default class Monthly extends Component {
   constructor(props) {
@@ -79,9 +79,7 @@ export default class Monthly extends Component {
 
     return (
       <View style={{flex: 1}}>
-        <View style={{flex: 1}}>
-        </View>
-
+        <Chart />
         <TraxivityDataTab data={data}/>
       </View>
     );
