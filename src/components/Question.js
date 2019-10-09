@@ -1,0 +1,50 @@
+import React, { Component } from "react";
+import {
+    Text,
+    StyleSheet,
+    View,
+    CheckBox
+} from 'react-native';
+
+export default class MenuButton extends Component {
+  state = {
+    checked: [
+      false, false, false, false, false
+    ]
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.infos}>{this.props.item.infos}</Text>
+        <Text style={styles.quesion}>{this.props.item.question}</Text>
+        <View style={styles.checkboxView}><CheckBox value={this.state.checked[0]} onValueChange={() => this.setState({checked: [!this.state.checked[0], false, false, false, false]}, () => this.props.onChange(this.state.checked[0] ? this.props.item.answers[0] : null))}/><Text>{this.props.item.answers[0]}</Text></View>
+        <View style={styles.checkboxView}><CheckBox value={this.state.checked[1]} onValueChange={() => this.setState({checked: [false, !this.state.checked[1], false, false, false]}, () => this.props.onChange(this.state.checked[1] ? this.props.item.answers[1] : null))}/><Text>{this.props.item.answers[1]}</Text></View>
+        <View style={styles.checkboxView}><CheckBox value={this.state.checked[2]} onValueChange={() => this.setState({checked: [false, false, !this.state.checked[2], false, false]}, () => this.props.onChange(this.state.checked[2] ? this.props.item.answers[2] : null))}/><Text>{this.props.item.answers[2]}</Text></View>
+        <View style={styles.checkboxView}><CheckBox value={this.state.checked[3]} onValueChange={() => this.setState({checked: [false, false, false, !this.state.checked[3], false]}, () => this.props.onChange(this.state.checked[3] ? this.props.item.answers[3] : null))}/><Text>{this.props.item.answers[3]}</Text></View>
+        <View style={styles.checkboxView}><CheckBox value={this.state.checked[4]} onValueChange={() => this.setState({checked: [false, false, false, false, !this.state.checked[4]]}, () => this.props.onChange(this.state.checked[4] ? this.props.item.answers[4] : null))}/><Text>{this.props.item.answers[4]}</Text></View>
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    margin: 10,
+    padding: 5,
+    borderColor: 'black',
+    borderRadius: 10,
+    borderWidth: 2
+  },
+  infos: {
+    fontSize: 10,
+    fontStyle: 'italic',
+    fontWeight: 'bold'
+  },
+  quesion: {
+    fontSize: 20
+  },
+  checkboxView: {
+    flexDirection: 'row',
+  }
+})
