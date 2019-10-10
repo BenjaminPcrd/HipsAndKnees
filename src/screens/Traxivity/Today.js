@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import {
-  View,
-  Button
+  View
 } from 'react-native';
 import GoogleFit, { Scopes } from 'react-native-google-fit'
 
@@ -30,7 +29,6 @@ export default class Today extends Component {
       ],
     }
     GoogleFit.authorize(options).then(res => this._getData()).catch(err => console.log(err))
-
   }
 
   async _getData() {
