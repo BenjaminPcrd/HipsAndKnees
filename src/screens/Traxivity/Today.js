@@ -77,7 +77,6 @@ export default class Today extends Component {
   }
 
   render() {
-    console.log(this.state.goal)
     var BoxData = {
       numBox1: this.state.steps > this.state.goal ? "100" : Math.round((this.state.steps*100)/this.state.goal),
       textBox1: "% Of Daily Goal",
