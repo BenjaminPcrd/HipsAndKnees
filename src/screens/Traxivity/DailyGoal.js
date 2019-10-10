@@ -4,10 +4,14 @@ import {
   Text,
   Picker 
 } from 'react-native';
+import { HeaderBackButton } from "react-navigation-stack";
 
 export default class DailyGoal extends Component {
-  static navigationOptions = {
-    title: 'Set the daily goal  ',
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: 'Set the daily goal',
+      headerLeft:(<HeaderBackButton onPress={navigation.getParam('goBackWithGoal')}/>)
+    };
   };
 
   constructor(props) {
@@ -21,6 +25,14 @@ export default class DailyGoal extends Component {
     for(var i = 3000; i < 100000; i += 500) {
       this.items.push(i)
     }
+  }
+
+  componentDidMount() {
+    this.props.navigation.setParams({goBackWithGoal: this._goBackWithGoal})
+  }
+
+  _goBackWithGoal = () => {
+    this.props.navigation.navigate("Today", {goal: this.state.goal})
   }
 
   render() {

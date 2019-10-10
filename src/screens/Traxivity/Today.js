@@ -15,7 +15,8 @@ export default class Today extends Component {
     this.state = {
       steps: null,
       cals: null,
-      dists: null
+      dists: null,
+      goal: null
     }
     this.tab = []
   }
@@ -29,6 +30,10 @@ export default class Today extends Component {
       ],
     }
     GoogleFit.authorize(options).then(res => this._getData()).catch(err => console.log(err))
+
+    this.props.navigation.addListener('didFocus', () => {
+      this.setState({goal: this.props.navigation.getParam('goal', 5000)}) 
+    })
   }
 
   async _getData() {
@@ -72,9 +77,10 @@ export default class Today extends Component {
   }
 
   render() {
+    console.log(this.state.goal)
     var BoxData = {
-      numBox1: 0,
-      textBox1: "Of Daily Goal",
+      numBox1: this.state.steps > this.state.goal ? "100" : Math.round((this.state.steps*100)/this.state.goal),
+      textBox1: "% Of Daily Goal",
       numBox2: this.state.steps,
       textBox2: "Steps Today",  
       numBox3: this.state.cals,
