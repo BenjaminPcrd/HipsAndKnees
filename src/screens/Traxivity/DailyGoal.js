@@ -1,10 +1,15 @@
 import React, { Component } from "react";
 import {
   View,
-  Text,
-  Picker 
+  Picker,
+  StyleSheet,
+  Dimensions
 } from 'react-native';
 import { HeaderBackButton } from "react-navigation-stack";
+import { Button, Icon,Text } from "native-base";
+
+const screenWidth = Dimensions.get('window').width
+const screenHeight = Dimensions.get('window').height
 
 export default class DailyGoal extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -37,20 +42,44 @@ export default class DailyGoal extends Component {
 
   render() {
     return (
-      <View>
-        <Picker 
-          style={{width: 200, height: 50}}
-          selectedValue={this.state.goal}
-          prompt={"Daily goal"}
-          onValueChange={(value) => this.setState({goal: value})}
-        >
-          {
-            this.items.map((item) => {
-              return (<Picker.Item label={item.toString()} value={item} key={item}/>)
-            })
-          }
-        </Picker>
+      <View style={{flex: 1}}>
+        <View style={styles.container}>
+          <Text style={styles.text}>Your daily goal:</Text>
+          <Picker 
+            style={styles.picker}
+            selectedValue={this.state.goal}
+            prompt={"Daily goal"}
+            onValueChange={(value) => this.setState({goal: value})}
+          >
+            {
+              this.items.map((item) => {
+                return (<Picker.Item label={item.toString()} value={item} key={item}/>)
+              })
+            }
+          </Picker>
+        </View>
+        <View style={[styles.container, {justifyContent: 'space-evenly'}]}>
+          <Button onPress={() => this.props.navigation.goBack()}><Text>Cancel</Text></Button>
+          <Button onPress={() => this._goBackWithGoal()}><Text>Ok</Text></Button>
+        </View>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'row',
+    margin: 10
+  },
+  text: {
+    fontSize: 20,
+    textAlign: 'center',
+    width: (screenWidth/2)-5,
+    marginTop: 10
+  },
+  picker: {
+    width: (screenWidth/2)-5
+  }
+})
