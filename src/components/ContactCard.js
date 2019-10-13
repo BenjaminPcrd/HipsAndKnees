@@ -12,9 +12,7 @@ import {
     Body
   } from 'native-base';
 
-import WebView from 'react-native-webview';
-
-export default class VideoCard extends Component {
+export default class ContactCard extends Component {
   render() {
     return (
       <View>
@@ -22,18 +20,15 @@ export default class VideoCard extends Component {
           <CardItem bordered>
             <Left>
               <Body>
-                <Text>{this.props.item.title}</Text>
+                <Text>{this.props.item.name}</Text>
               </Body>
             </Left>
           </CardItem>
           <CardItem>
-            <WebView
-              source={{html: '<iframe width="1280" height="720" src="https://www.youtube.com/embed/' + this.props.item.code + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'}}
-              style={{height: 200}}
-            />
+          <Text>{this.props.item.description}</Text>
           </CardItem>
           <CardItem>
-            <Text>{this.props.item.description}</Text>
+            <Text>{this.props.item.number}</Text>
           </CardItem>
         </Card>
       </View>

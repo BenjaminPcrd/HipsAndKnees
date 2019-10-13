@@ -1,0 +1,17 @@
+[
+  {
+    "name": "contact 1",
+    "description": "description contact 1",
+    "number": "0123456789"
+  },
+  {
+    "name": "contact 2",
+    "description": "description contact 2",
+    "number": "0123456789"
+  },
+  {
+    "name": "contact 3",
+    "description": "description contact 3",
+    "number": "0123456789"
+  }  
+]
