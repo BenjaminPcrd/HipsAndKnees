@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 import {
-    Text,
-    StyleSheet,
-    View,
     processColor
 } from 'react-native';
 
@@ -62,9 +59,3 @@ export default class Chart extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  }
-})
