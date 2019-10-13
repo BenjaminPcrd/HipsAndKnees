@@ -83,9 +83,7 @@ export default class Today extends Component {
   }
 
   render() {
-    var progress = 0
-    progress = this.state.steps > this.state.goal ? 100 : Math.round((this.state.steps*100)/this.state.goal)
-    console.log(this.state)
+    var progress = this.state.steps > this.state.goal ? 100 : Math.round((this.state.steps*100)/this.state.goal)
     var BoxData = {
       numBox1: this.state.goal,
       textBox1: "Daily Goal",
@@ -114,7 +112,8 @@ export default class Today extends Component {
             radius={(screenWidth/3)}
             borderWidth={20}
             color="rgb(0, 220, 169)"
-            bgColor="#fff"
+            bgColor="rgb(255, 255, 255)"
+            shadowColor="rgb(200, 200, 200)"
           >
             <Text style={{ fontSize: 18 }}>{progress + " %"}</Text>
             <Text style={{ fontSize: 18 }}>of Daily Goal</Text>
