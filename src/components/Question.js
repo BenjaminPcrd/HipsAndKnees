@@ -15,7 +15,7 @@ export default class MenuButton extends Component {
 
   componentDidMount() {
     if(this.props.item.type == "MULTIPLE_CHOICE_SINGLE_ANSWER" || this.props.item.type == "MULTIPLE_CHOICE_MULTIPLE_ANSWER") {
-      var state = this.props.item.answers.map((x, i) => {
+      const state = this.props.item.answers.map((x, i) => {
         return {id: i, checked: false}
       })
       this.setState({checkboxes: state})
@@ -72,8 +72,8 @@ export default class MenuButton extends Component {
       case "TRUE_FALSE":
         return (
           <View>
-            <View style={styles.checkboxView}><CheckBox value={this._isChecked(1)} onValueChange={() => this._toggleCheckbox(1)}/><Text>True</Text></View>
-            <View style={styles.checkboxView}><CheckBox value={this._isChecked(0)} onValueChange={() => this._toggleCheckbox(0)}/><Text>False</Text></View>
+            <View style={styles.checkboxView}><CheckBox value={this._isChecked(1)} onValueChange={() => this._toggleCheckbox(1)}/><Text>Yes</Text></View>
+            <View style={styles.checkboxView}><CheckBox value={this._isChecked(0)} onValueChange={() => this._toggleCheckbox(0)}/><Text>No</Text></View>
           </View>
         )
       case "SHORT_ANSWER":
