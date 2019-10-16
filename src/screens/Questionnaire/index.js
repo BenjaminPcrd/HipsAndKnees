@@ -14,16 +14,15 @@ export default class Questionnaire extends Component {
 
   constructor(props) {
     super(props)
-    this.answers = []
   }
   
   render() {
     return (
       <FlatList
         data={data}
-        renderItem={({ item }) => <Question item={item} onChange={(answer) => this.answers.push({question: item, answer: answer})}/>}
+        renderItem={({ item }) => <Question item={item} onChange={(answer) => console.log({question: item, answer: answer})}/>}
         keyExtractor={item => item.id}
-        ListFooterComponent={() => <Button title={'Submit'} onPress={() => console.log(this.answers)}/>}
+        ListFooterComponent={() => <Button title={'Submit'} onPress={() => console.log("submit")}/>}
       />
     );
   }
