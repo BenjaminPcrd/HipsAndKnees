@@ -14,7 +14,7 @@ export default class MenuButton extends Component {
   }
 
   componentDidMount() {
-    if(this.props.item.type == "MULTIPLE_CHOICE") {
+    if(this.props.item.type == "MULTIPLE_CHOICE_SINGLE_ANSWER" || this.props.item.type == "MULTIPLE_CHOICE_MULTIPLE_ANSWER") {
       var state = this.props.item.answers.map((x, i) => {
         return {id: i, checked: false}
       })
@@ -37,7 +37,11 @@ export default class MenuButton extends Component {
   _toggleCheckbox(index) {
     const checkboxes = this.state.checkboxes
     checkboxes.map(x => {
-      x.id != index ? x.checked = false : x.checked = true
+      if(x.id == index) {
+        x.checked ? x.checked = false : x.checked = true
+      } else if(this.props.item.type == "MULTIPLE_CHOICE_SINGLE_ANSWER") {
+        x.checked = false
+      }
     })
     this.setState({ checkboxes })
     this._onChange(index)
@@ -49,7 +53,7 @@ export default class MenuButton extends Component {
 
   _renderAnswer() {
     switch(this.props.item.type) {
-      case "MULTIPLE_CHOICE":
+      case "MULTIPLE_CHOICE_SINGLE_ANSWER":
         return (
           <FlatList 
             data={this.props.item.answers}
@@ -57,6 +61,14 @@ export default class MenuButton extends Component {
             keyExtractor={item => item}
           />
         )
+      case "MULTIPLE_CHOICE_MULTIPLE_ANSWER":
+          return (
+            <FlatList 
+              data={this.props.item.answers}
+              renderItem={({ item, index }) => <View style={styles.checkboxView}><CheckBox value={this._isChecked(index)} onValueChange={() => this._toggleCheckbox(index)}/><Text>{item}</Text></View>}
+              keyExtractor={item => item}
+            />
+          )
       case "TRUE_FALSE":
         return (
           <View>
