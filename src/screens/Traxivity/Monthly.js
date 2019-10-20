@@ -31,15 +31,15 @@ export default class Monthly extends Component {
     };
 
     getSteps(options, null, res => {
-      this.setState({steps: res})
+      this.setState({steps: res ? res : []})
     })
 
     getCals({...options, basalCalculation: false}, res => {
-      this.setState({cals: res})
+      this.setState({cals: res ? res : []})
     })
 
     getDists(options, res => {
-      this.setState({distances: res})
+      this.setState({distances: res ? res : []})
     })
   }
 

@@ -54,15 +54,15 @@ export default class Today extends Component {
     };
 
     getSteps(options, null, res => {
-      this.setState({ steps: res[0].value})
+      this.setState({ steps: res ? res[0].value : 0})
     })
 
     getCals({...options, basalCalculation: false}, res => {
-      this.setState({ cals: res[0].calorie })
+      this.setState({ cals: res ? res[0].calorie : 0 })
     })
 
     getDists(options, res => {
-      this.setState({ dists: res[0].distance })
+      this.setState({ dists: res ? res[0].distance : 0})
     })
 
     for(i = 0; i < 24; i++) {
