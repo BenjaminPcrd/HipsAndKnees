@@ -39,7 +39,8 @@ export default class Questionnaire extends Component {
         transaction.update(ref, {id: this.state.user.user.id})
         console.log("doc exists")
       }
-    })
+
+    }).then(() => console.log("updated")).catch(err => console.log("error: " + err))
   }
   
   render() {
