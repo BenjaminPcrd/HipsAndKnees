@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import {
   View,
   Dimensions,
-  Text
+  Alert
 } from 'react-native';
 import GoogleFit, { Scopes } from 'react-native-google-fit'
 
@@ -40,6 +40,14 @@ export default class Today extends Component {
     this.props.navigation.addListener('didFocus', () => {
       this.setState({goal: this.props.navigation.getParam('goal', 5000)}) 
     })
+
+    GoogleFit.isAvailable((err, res) => {
+      if(err || !res) {
+        Alert.alert('Download Google Fit', 'No data available for this account, please download Google Fit', [
+          {text: 'OK', style: 'cancel'}
+        ])
+      }
+    })
   }
 
   async _getData() {
@@ -54,7 +62,7 @@ export default class Today extends Component {
     };
 
     getSteps(options, null, res => {
-      this.setState({ steps: res ? res[0].value : 0})
+      this.setState({ steps: res.length > 0 ? res[0].value : 0})
     })
 
     getCals({...options, basalCalculation: false}, res => {
@@ -102,10 +110,6 @@ export default class Today extends Component {
     
     return (
       <ScrollView style={{flex: 1}}>
-        <View style={{height: screenHeight/1.3}}>
-          <TraxivityDataTab data={BoxData}/>
-          <Chart tabStep={this.tab} formatter={formatter} granularity={4}/>
-        </View>
         <View style={{alignItems: 'center', margin: 10}}>
           <Progress.Circle 
             size={screenWidth/1.5} 
@@ -114,6 +118,10 @@ export default class Today extends Component {
             thickness={10}
             showsText={true}
           />
+        </View>
+        <View style={{height: screenHeight/1.3}}>
+          <TraxivityDataTab data={BoxData}/>
+          <Chart tabStep={this.tab} formatter={formatter} granularity={4}/>
         </View>
       </ScrollView>
     );
