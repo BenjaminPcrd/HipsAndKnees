@@ -16,7 +16,7 @@ export default class UsefulContacts extends Component {
       <FlatList
         data={data}
         renderItem={({ item }) => <ContactCard item={item}/>}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item.name}
       />
     );
   }

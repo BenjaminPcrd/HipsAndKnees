@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import {
-  View,
-  Text
+  View
 } from 'react-native';
 
 import { getSteps, getCals, getDists } from '../../api/googleFitApi'

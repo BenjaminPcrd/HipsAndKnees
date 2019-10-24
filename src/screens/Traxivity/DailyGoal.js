@@ -3,13 +3,13 @@ import {
   View,
   Picker,
   StyleSheet,
-  Dimensions
+  Dimensions,
+  Button,
+  Text
 } from 'react-native';
 import { HeaderBackButton } from "react-navigation-stack";
-import { Button, Icon,Text } from "native-base";
 
 const screenWidth = Dimensions.get('window').width
-const screenHeight = Dimensions.get('window').height
 
 export default class DailyGoal extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -59,8 +59,8 @@ export default class DailyGoal extends Component {
           </Picker>
         </View>
         <View style={[styles.container, {justifyContent: 'space-evenly'}]}>
-          <Button onPress={() => this.props.navigation.goBack()}><Text>Cancel</Text></Button>
-          <Button onPress={() => this._goBackWithGoal()}><Text>Ok</Text></Button>
+          <Button color={'rgb(0, 220, 169)'} title={'Cancel'} onPress={() => this.props.navigation.goBack()}/>
+          <Button color={'rgb(0, 220, 169)'} title={'Ok'} onPress={() => this._goBackWithGoal()}/>
         </View>
       </View>
     );
@@ -69,7 +69,6 @@ export default class DailyGoal extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     flexDirection: 'row',
     margin: 10
   },
