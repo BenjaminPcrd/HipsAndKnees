@@ -5,6 +5,8 @@ import {
   Alert
 } from 'react-native';
 import GoogleFit, { Scopes } from 'react-native-google-fit'
+import { GoogleSignin } from 'react-native-google-signin';
+import firebase from 'react-native-firebase';
 
 import { getSteps, getCals, getDists } from '../../api/googleFitApi'
 import TraxivityDataTab from '../../components/TraxivityDataTab'
@@ -22,7 +24,8 @@ export default class Today extends Component {
       steps: 0,
       cals: 0,
       dists: 0,
-      goal: 5000
+      goal: 5000,
+      user: null
     }
     this.tab = []
   }
@@ -36,9 +39,20 @@ export default class Today extends Component {
       ],
     }
     GoogleFit.authorize(options).then(res => this._getData()).catch(err => console.log(err))
+    GoogleSignin.getCurrentUser().then(user => this.setState({user})).catch(err => console.log(err))
 
     this.props.navigation.addListener('didFocus', () => {
-      this.setState({goal: this.props.navigation.getParam('goal', 5000)}) 
+      const ref = firebase.firestore().collection('users').doc(this.state.user.user.id);
+      
+      firebase.firestore().runTransaction(async transaction => {
+        const doc = await transaction.get(ref);
+
+        if(!doc.exists) {
+          transaction.set(ref, {user: this.state.user.user, dailyStepGoal: 5000})
+        } else {
+          this.setState({goal: doc._data.dailyStepGoal})
+        }
+      })
     })
 
     GoogleFit.isAvailable((err, res) => {

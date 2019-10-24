@@ -47,7 +47,6 @@ export default class Questionnaire extends Component {
           {text: 'ok', onPress: () => this.props.navigation.goBack()}
         ])
       }).catch(err => {
-        console.log(err)
         Alert.alert('Oups, An error occurred', err+"", [
           {text: 'ok', onPress: () => this.props.navigation.goBack()}
         ])

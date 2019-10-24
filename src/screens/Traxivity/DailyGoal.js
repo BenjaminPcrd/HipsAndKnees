@@ -5,9 +5,13 @@ import {
   StyleSheet,
   Dimensions,
   Button,
-  Text
+  Text,
+  Alert
 } from 'react-native';
 import { HeaderBackButton } from "react-navigation-stack";
+
+import { GoogleSignin } from 'react-native-google-signin';
+import firebase from 'react-native-firebase';
 
 const screenWidth = Dimensions.get('window').width
 
@@ -23,7 +27,8 @@ export default class DailyGoal extends Component {
     super(props)
 
     this.state = {
-      goal: 5000
+      goal: 5000,
+      user: null
     }
 
     this.items = []
@@ -33,11 +38,29 @@ export default class DailyGoal extends Component {
   }
 
   componentDidMount() {
-    this.props.navigation.setParams({goBackWithGoal: this._goBackWithGoal})
+    GoogleSignin.getCurrentUser().then(user => this.setState({user})).catch(err => console.log(err))
   }
 
-  _goBackWithGoal = () => {
-    this.props.navigation.navigate("Today", {goal: this.state.goal})
+  _saveGoal = () => {
+    const ref = firebase.firestore().collection('users').doc(this.state.user.user.id);
+    firebase.firestore().runTransaction(async transaction => {
+      const doc = await transaction.get(ref);
+      
+      if(!doc.exists) {
+        transaction.set(ref, {user: this.state.user.user, dailyStepGoal: this.state.goal})
+      } else {
+        transaction.update(ref, {user: this.state.user.user, dailyStepGoal: this.state.goal})
+      }
+
+    }).then(() => {
+      Alert.alert('Thank you', 'Your goal have been saved', [
+        {text: 'ok', onPress: () => this.props.navigation.goBack()}
+      ])
+    }).catch(err => {
+      Alert.alert('Oups, An error occurred', err+"", [
+        {text: 'ok', onPress: () => this.props.navigation.goBack()}
+      ])
+    })
   }
 
   render() {
@@ -60,7 +83,7 @@ export default class DailyGoal extends Component {
         </View>
         <View style={[styles.container, {justifyContent: 'space-evenly'}]}>
           <Button color={'rgb(0, 220, 169)'} title={'Cancel'} onPress={() => this.props.navigation.goBack()}/>
-          <Button color={'rgb(0, 220, 169)'} title={'Ok'} onPress={() => this._goBackWithGoal()}/>
+          <Button color={'rgb(0, 220, 169)'} title={'Ok'} onPress={() => this._saveGoal()}/>
         </View>
       </View>
     );
