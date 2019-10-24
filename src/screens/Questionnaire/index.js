@@ -39,7 +39,12 @@ export default class Questionnaire extends Component {
           transaction.set(ref, {user: this.state.user.user, questionnaire: [{date: new Date(), results: this._answers}]})
         } else {
           var prevQuest = doc._data.questionnaire
-          transaction.update(ref, {user: this.state.user.user, questionnaire: [...prevQuest, {date: new Date(), results: this._answers}]})
+          if(prevQuest) {
+            transaction.update(ref, {user: this.state.user.user, questionnaire: [...prevQuest, {date: new Date(), results: this._answers}]})
+          } else {
+            transaction.update(ref, {user: this.state.user.user, questionnaire: [{date: new Date(), results: this._answers}]})
+          }
+          
         }
 
       }).then(() => {
@@ -47,6 +52,7 @@ export default class Questionnaire extends Component {
           {text: 'ok', onPress: () => this.props.navigation.goBack()}
         ])
       }).catch(err => {
+        console.log(err)
         Alert.alert('Oups, An error occurred', err+"", [
           {text: 'ok', onPress: () => this.props.navigation.goBack()}
         ])
