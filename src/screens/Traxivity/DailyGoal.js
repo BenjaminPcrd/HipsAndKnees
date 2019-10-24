@@ -16,11 +16,8 @@ import firebase from 'react-native-firebase';
 const screenWidth = Dimensions.get('window').width
 
 export default class DailyGoal extends Component {
-  static navigationOptions = ({ navigation }) => {
-    return {
-      title: 'Set the daily goal',
-      headerLeft:(<HeaderBackButton onPress={navigation.getParam('goBackWithGoal')}/>)
-    };
+  static navigationOptions = {
+    title: 'Set the daily goal',
   };
 
   constructor(props) {
