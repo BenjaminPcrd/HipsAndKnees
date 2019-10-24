@@ -39,7 +39,7 @@ export default class MenuButton extends Component {
     checkboxes.map(x => {
       if(x.id == index) {
         x.checked ? x.checked = false : x.checked = true
-      } else if(this.props.item.type == "MULTIPLE_CHOICE_SINGLE_ANSWER") {
+      } else if(this.props.item.type == "MULTIPLE_CHOICE_SINGLE_ANSWER" || this.props.item.type == "TRUE_FALSE") {
         x.checked = false
       }
     })

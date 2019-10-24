@@ -20,6 +20,7 @@ export default class Questionnaire extends Component {
     this.state = {
       user: null
     }
+    this._answers = data.map(q => { return({answers: [], question: q}) })
   }
 
   componentDidMount() {
@@ -27,7 +28,6 @@ export default class Questionnaire extends Component {
   }
 
   _submit() {
-    console.log(this.state.user.user.id)
     const ref = firebase.firestore().collection('users').doc(this.state.user.user.id);
     firebase.firestore().runTransaction(async transaction => {
       const doc = await transaction.get(ref);
@@ -42,12 +42,31 @@ export default class Questionnaire extends Component {
 
     }).then(() => console.log("updated")).catch(err => console.log("error: " + err))
   }
+
+  _addAnswer(answer, question) {
+    //console.log(typeof(answer))
+    var element = this._answers.find(i => i.question.id == question.id)
+    if(question.type == "MULTIPLE_CHOICE_MULTIPLE_ANSWER") {
+      if(element.answers.includes(answer)) {
+        this._answers.find(i => i.question.id == question.id).answers.splice(element.answers.indexOf(answer), 1)
+      } else {
+        this._answers.find(i => i.question.id == question.id).answers.push(answer)
+      }
+    } else {
+      if(element.answers.includes(answer)) {
+        this._answers.find(i => i.question.id == question.id).answers = []
+      } else {
+        this._answers.find(i => i.question.id == question.id).answers[0] = answer
+      }
+    }
+    //console.log(this._answers.find(i => i.question.id == question.id).answers)
+  }
   
   render() {
     return (
       <FlatList
         data={data}
-        renderItem={({ item }) => <Question item={item} onChange={(answer) => console.log({question: item, answer: answer})}/>}
+        renderItem={({ item }) => <Question item={item} onChange={(answer) => this._addAnswer(answer, item)}/>}
         keyExtractor={item => item.id}
         ListFooterComponent={() => <Button color={'rgb(246, 200, 43)'} title={'Submit'} onPress={() => this._submit()}/>}
       />
