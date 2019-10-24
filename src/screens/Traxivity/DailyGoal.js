@@ -38,7 +38,19 @@ export default class DailyGoal extends Component {
   }
 
   componentDidMount() {
-    GoogleSignin.getCurrentUser().then(user => this.setState({user})).catch(err => console.log(err))
+    GoogleSignin.getCurrentUser().then(user => this.setState({user}, () => {
+      const ref = firebase.firestore().collection('users').doc(this.state.user.user.id);
+      
+      firebase.firestore().runTransaction(async transaction => {
+        const doc = await transaction.get(ref);
+
+        if(!doc.exists) {
+          transaction.set(ref, {user: this.state.user.user, dailyStepGoal: 5000})
+        } else {
+          this.setState({goal: doc._data.dailyStepGoal})
+        }
+      })
+    })).catch(err => console.log(err))
   }
 
   _saveGoal = () => {
