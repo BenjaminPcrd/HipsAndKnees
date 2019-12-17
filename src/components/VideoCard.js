@@ -21,8 +21,8 @@ export default class VideoCard extends Component {
         <Card style={styles.card}>
           <CardItem bordered>
             <Left>
-              <Body>
-                <Text>{this.props.item.title}</Text>
+              <Body style={{alignItems: 'center'}}>
+                <Text style={{fontWeight: 'bold', fontSize: 20}}>{this.props.item.title}</Text>
               </Body>
             </Left>
           </CardItem>
@@ -33,7 +33,7 @@ export default class VideoCard extends Component {
             />
           </CardItem>
           <CardItem>
-            <Text>{this.props.item.description}</Text>
+            <Text style={{color: 'grey', fontSize: 14}}>{this.props.item.description}</Text>
           </CardItem>
         </Card>
       </View>

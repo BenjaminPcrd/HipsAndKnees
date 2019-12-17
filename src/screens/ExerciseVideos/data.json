@@ -58,7 +58,7 @@
     "type": "Strength",
     "subtitle": "Exercises for strengthening muscles",
     "description": "Designed for patients in the subacute to late stages of post-operation.",
-    "image": "rangeOfMovement.jpg",
+    "image": "strength.jpg",
     "videos": [
       {
         "id": "3", 
@@ -127,7 +127,7 @@
     "type": "Balance",
     "subtitle": "Exercises for improving balanc",
     "description": "Designed for patients in the subacute to late stages of post-operation.",
-    "image": "rangeOfMovement.jpg",
+    "image": "balance.png",
     "videos": [
       {
         "id": "12", 
@@ -148,7 +148,7 @@
     "type": "Stretches",
     "subtitle": "Stretches for warming up",
     "description": "Designed for patients in the subacute to late stages of post-operation.",
-    "image": "rangeOfMovement.jpg",
+    "image": "stretches.png",
     "videos": [
       {
         "id": "15", 
