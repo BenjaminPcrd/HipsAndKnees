@@ -6,9 +6,24 @@
     "description": "Designed for patients in the subacute to late stages of post-operation.",
     "image": "rangeOfMovement.jpg",
     "videos": [
-      {"id": "1", "title": "Passive Range of Motion (Knee Joint)", "description": "Learn about passive range of motion assessment of the knee joint!", "code": "SeF3Hmw7k3U"},
-      {"id": "2", "title": "Active Range of Motion (Knee Joint)", "description": "description video2", "code": "G6eDhgTmNIA"},
-      {"id": "3", "title": "video3", "description": "description video3", "code": "G6eDhgTmNIA"}
+      {
+        "id": "1", 
+        "title": "Sliding knee flexion/extension", 
+        "description": "Using the slide sheet, you were given by the hospital, or if you didn’t have one, use a plastic bag on top of a fitted sheet on a bed.  Bend your knee, slide your heel up towards your bottom, and back down again.  Aim to have your hip, knee and foot in a straight line.  Try not to let your knee rollinwards or outwards as you slide up and down.  Repeat this movement 10 times.", 
+        "code": "zIXFeN20ucw"
+      },
+      {
+        "id": "2", 
+        "title": "Sliding knee flexion/extension with towel", 
+        "description": "Using the slide sheet, you were given by the hospital, or if you didn’t have one, use a plastic bag on top of a fitted sheet on a bed.  Take a bath towel and place it behind your foot.  Bend your knee; slide your heel up towards your bottom, pull towel towards you so that you feel a stretch on your knee as it bends as far as you can manage. Then slide your foot back down again.Aim to have your hip, knee and foot in a straight line.  Try not to let your knee roll inwards or outwards as you slide up and down.  Repeat this movement 10 times.", 
+        "code": "NflPXD0nj7A"
+      },
+      {
+        "id": "16", 
+        "title": "Chair knee flexion", 
+        "description": "In a chair, cross your good leg over the front of your operated leg shin.  Use your good leg to pull back and pull your operated leg back under the chair to help bend the knee.Repeat 10 times.", 
+        "code": "v1cTOE_E1Mc"
+      }
     ]
   },
   {
@@ -18,9 +33,24 @@
     "description": "Designed for patients in the subacute to late stages of post-operation.",
     "image": "cardiovascular.jpg",
     "videos": [
-      {"id": "1", "title": "video1", "description": "description video1", "code": "G6eDhgTmNIA"},
-      {"id": "2", "title": "video2", "description": "description video2", "code": "G6eDhgTmNIA"},
-      {"id": "3", "title": "video3", "description": "description video3", "code": "G6eDhgTmNIA"}
+      {
+        "id": "11", 
+        "title": "Step ups (style 2)", 
+        "description": "Place your operated leg on a step and keep it there while you step up and down to it with your other leg. Aim to build up to doing this for 5 minutes per time. You should feel like you are breathing faster but still able to hold a conversation with someone. If you feel very out of breath and can’t speak slow down your speed and build up more gradually.", 
+        "code": "ze0nG8as0qk"
+      },
+      {
+        "id": "18", 
+        "title": "Sitting – cycle", 
+        "description": "Using a foot pedals aim to cycle for 5 minutes.", 
+        "code": "IWfNNpV0LLk"
+      },
+      {
+        "id": "19", 
+        "title": "Exercise bike", 
+        "description": "Adjust the seat height on the exercise bike so you can turn the pedals (sometimes requires a higher seat height), then aim to do 5 minutes cycle without or without resistance as able with effort. You should feel like you are breathing faster but still able to hold a conversation with someone. If you feel very out of breath and can’t speak slow down your speed and build up more gradually.", 
+        "code": "O7M3EFmuWh4"
+      }
     ]
   },
   {
@@ -30,9 +60,66 @@
     "description": "Designed for patients in the subacute to late stages of post-operation.",
     "image": "rangeOfMovement.jpg",
     "videos": [
-      {"id": "1", "title": "video1", "description": "description video1", "code": "G6eDhgTmNIA"},
-      {"id": "2", "title": "video2", "description": "description video2", "code": "G6eDhgTmNIA"},
-      {"id": "3", "title": "video3", "description": "description video3", "code": "G6eDhgTmNIA"}
+      {
+        "id": "3", 
+        "title": "Static quads", 
+        "description": "Pull your toes and foot up towards you while squeezing your thigh muscle and pushing your knee as stratigh as you can.Hold for a count of 5 seconds and release.Repeat this 10 times.", 
+        "code": "M1saPwajh1k"
+      },
+      {
+        "id": "4", 
+        "title": "Inner range quads", 
+        "description": "Make a roll about 6-8 inches in diameter – you can use a foam roller, and empty 1 litre soft drink bottle filled with sand or rolled up towels.  The roll needs to be firm so you can push down on it.Place the roll under your knee, pull your toes and foot up towards you, squeeze your front thigh muscle and lift up your foot to straighten your knee.Hold this for a count of 5 seconds as straight as possible and then lower back down.Repeat this 10 times.", 
+        "code": "F3_PqFt45ng"
+      },
+      {
+        "id": "5", 
+        "title": "Inner range quads with weight", 
+        "description": "Place a weight around your ankle – use ankle weights or fill a freezer bag with sand and weigh on scales then place over your ankle.Make a roll about 6-8 inches in diameter – you can use a foam roller, and empty 1 litre soft drink bottle filled with sand or rolled up towels.  The roll needs to be firm so you can push down on it.Place the roll under your knee, pull your toes and foot up towards you, squeeze your front thigh muscle and lift up your foot to straighten your knee.  Hold this for a count of 5 seconds as straight as possible and then lower back down.Repeat this 10 times.", 
+        "code": "qmDDK9JAkJk"
+      },
+      {
+        "id": "6", 
+        "title": "Straight leg raise", 
+        "description": "Pull up your toes and foot towards you, squeeze your front thigh muscle and push your knee as straight as possible.  Keeping your leg straight, lift your leg up (about 12 inches), hold for a count of 5 seconds then lower back down to the bed.Repeat this 10 times.", 
+        "code": "UfqTHPuxPEU"
+      },
+      {
+        "id": "7", 
+        "title": "Bridge", 
+        "description": "Lying on your back, knees bent and feet flat on the bed or floor, squeeze your buttocks and then lift your bottom up off the bed.Aim for a straight line between your shoulders, hips and knees.  Hold for a count of 5 seconds and then lower back down.Repeat this 10 times.", 
+        "code": "pnWHbeoRK30"
+      },
+      {
+        "id": "8", 
+        "title": "Bridge – single leg", 
+        "description": "Lying on your back, bend your operated knee and keep your feet flat on the bed or floor and keep your good leg straight, lying on the bed. Squeeze your buttocks and then lift your bottom and good leg up off the bed.Aim for a straight line between your shoulders, hips and knees on the operated side.  Hold for a count of 5 seconds and then lower back down.Repeat this 10 times.", 
+        "code": "RPeAvtnynI8"
+      },
+      {
+        "id": "9", 
+        "title": "Straight leg raise with weight", 
+        "description": "Place a weight around your ankle – use ankle weights or fill a freezer bag with sand and weigh on scales then place over your ankle. Pull up your toes and foot towards you, squeeze your front thigh muscle and push your knee as straight as possible.  Keeping your leg straight, lift your leg up (about 12 inches), then lower back down to the bed.Repeat this 10 times.", 
+        "code": "RFtheSQ8nWY"
+      },
+      {
+        "id": "10", 
+        "title": "Step ups", 
+        "description": "Using a step placed next to the kitchen worktop for support, or use the bottom step on the stair with handrail.  Aim to step up and down from step. Aim to build up to doing this for 5 minutes per time. You should feel like you are breathing faster but still able to hold a conversation with someone. If you feel very out of breath and can’t speak slow down your speed and build up more gradually.", 
+        "code": "fGZWocNTcgI"
+      },
+      {
+        "id": "14", 
+        "title": "Hamstrings", 
+        "description": "Stand and use the kitchen worktop for support or the back of a chair.  Bend your operated knee and lift your foot backwards to take your heel towards your bottom (keeping your hips still) and lower back down.Repeat 10 times.", 
+        "code": "LEEuvoT2xgA"
+      },
+      {
+        "id": "17", 
+        "title": "Squat", 
+        "description": "With a chair behind you, stick out your bottom to squat down towards the chair.  Go as far as you are able.Make sure you don’t let your knees go in front of your toes (you should stillsee your toes throughout the exercise).  Squeeze your buttocks and thighsto stand back up. Repeat for 5 minutes or until your bottom and front of your thighs start to ache.", 
+        "code": "Twd4Av_MAYQ"
+      }
     ]
   },
   {
@@ -42,9 +129,18 @@
     "description": "Designed for patients in the subacute to late stages of post-operation.",
     "image": "rangeOfMovement.jpg",
     "videos": [
-      {"id": "1", "title": "video1", "description": "description video1", "code": "G6eDhgTmNIA"},
-      {"id": "2", "title": "video2", "description": "description video2", "code": "G6eDhgTmNIA"},
-      {"id": "3", "title": "video3", "description": "description video3", "code": "G6eDhgTmNIA"}
+      {
+        "id": "12", 
+        "title": "Single leg stand", 
+        "description": "Using the kitchen worktop for support or the back of a chair, stand on youroperated leg.  Aim to reduce the amount of support you need until you canstand for 1 minute without support.", 
+        "code": "U_lagxsD1zo"
+      },
+      {
+        "id": "13", 
+        "title": "Wobble- board", 
+        "description": "Using the kitchen worktop for support or the back of a chair, stand on a wobble board, get your balance, and then aim to reduce your support untilyou can stand and balance on the wobble board for 1 minute without support.", 
+        "code": "kvTi2MYdHAQ"
+      }
     ]
   },
   {
@@ -54,9 +150,12 @@
     "description": "Designed for patients in the subacute to late stages of post-operation.",
     "image": "rangeOfMovement.jpg",
     "videos": [
-      {"id": "1", "title": "video1", "description": "description video1", "code": "G6eDhgTmNIA"},
-      {"id": "2", "title": "video2", "description": "description video2", "code": "G6eDhgTmNIA"},
-      {"id": "3", "title": "video3", "description": "description video3", "code": "G6eDhgTmNIA"}
+      {
+        "id": "15", 
+        "title": "Calf/hamstring stretch", 
+        "description": "Using support (if required). Place operated leg in front of you.  Pull up foot and toes and keep knee straight while you bend opposite knee until you feel a stretch.Hold stretch for 10 seconds and repeat twice on each leg.", 
+        "code": "0fG2FJKuEoI"
+      }
     ]
   }
 ]
