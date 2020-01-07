@@ -10,7 +10,6 @@ import { GoogleSignin } from 'react-native-google-signin';
 import firebase from 'react-native-firebase';
 
 import Question from '../../components/Question'
-const data = require('./dataQuestionnaire.json')
 
 export default class Questionnaire extends Component {
   static navigationOptions = {
@@ -20,13 +19,18 @@ export default class Questionnaire extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      user: null
+      user: null,
+      data: ""
     }
-    this._answers = data.map(q => { return({answers: [], question: q}) })
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     GoogleSignin.getCurrentUser().then(user => this.setState({user})).catch(err => console.log(err))
+    const ref = firebase.firestore().collection('questionnaire')
+    var quest = await ref.get()
+    quest = quest._docs.map(x => x._data)
+    this.setState({data: quest})
+    this._answers = this.state.data.map(q => { return({answers: [], question: q}) })
   }
 
   _submit() {
@@ -82,7 +86,7 @@ export default class Questionnaire extends Component {
   render() {
     return (
       <FlatList
-        data={data}
+        data={this.state.data}
         renderItem={({ item }) => <Question item={item} onChange={(answer) => this._addAnswer(answer, item)}/>}
         keyExtractor={item => item.id}
         ListFooterComponent={() => <Button color={'rgb(246, 200, 43)'} title={'Submit'} onPress={() => this._submit()}/>}

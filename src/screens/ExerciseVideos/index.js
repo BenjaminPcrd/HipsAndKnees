@@ -15,7 +15,7 @@ export default class ExerciseVideos extends Component {
     data: ""
   }
 
-  async componentDidMount(props) {
+  async componentDidMount() {
     const ref = firebase.firestore().collection('videos')
     var videos = await ref.get()
     videos = videos._docs.map(x => x._data)
