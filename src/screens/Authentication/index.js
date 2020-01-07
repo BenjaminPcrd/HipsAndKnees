@@ -2,11 +2,15 @@ import React, { Component } from "react";
 import {
   View,
   StyleSheet,
-  ActivityIndicator
+  ActivityIndicator,
+  Image,
+  Dimensions
 } from 'react-native';
 
 import { GoogleSignin, GoogleSigninButton, statusCodes } from 'react-native-google-signin';
 import firebase from 'react-native-firebase'
+
+const deviceWidth = Dimensions.get('window').width
 
 export default class Authentication extends Component {
   static navigationOptions = {
@@ -74,6 +78,16 @@ export default class Authentication extends Component {
     }
     return (
       <View style={styles.container}>
+        <Image
+          style={{
+            alignSelf: "center",
+            resizeMode: "cover",
+            marginVertical: 5,
+            width: deviceWidth/3,
+            height: deviceWidth/3,
+          }}
+          source={{uri: 'asset:/ic_launcher.png'}}
+        />
         <GoogleSigninButton
           style={{ width: 300, height: 100 }}
           size={GoogleSigninButton.Size.Wide}
@@ -87,7 +101,7 @@ export default class Authentication extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
     alignItems: 'center'
   }
 })
