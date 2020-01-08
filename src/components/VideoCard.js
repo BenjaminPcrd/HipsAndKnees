@@ -28,7 +28,7 @@ export default class VideoCard extends Component {
           </CardItem>
           <CardItem>
             <WebView
-              source={{html: '<iframe width="1280" height="720" src="https://www.youtube.com/embed/' + this.props.item.code + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'}}
+              source={{html: '<iframe frameborder="0" allowfullscreen width="100%" height="100%" src="https://www.youtube.com/embed/' + this.props.item.code + '"></iframe>'}}
               style={{height: 200}}
             />
           </CardItem>
