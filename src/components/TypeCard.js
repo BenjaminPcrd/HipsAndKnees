@@ -40,7 +40,8 @@ export default class TypeCard extends Component {
                   width: deviceWidth / 1.18,
                   height: 150,
                 }}
-                source={{uri: 'asset:/' + this.props.item.image}}
+                source={{uri: this.props.item.image}}
+                
               />
               <Text>{this.props.item.description}</Text>
             </Body>
